@@ -46,7 +46,7 @@ A business owner may want `What changed / Why / What now?`; an expert operator m
 
 Before promising to replace a mature system, pilot one measurable cross-system workflow. Document handoffs, required mappings, review labor, and implementation cost. The second customer's reuse is the test for scalable software, not the first customer's successful custom deployment.
 
- 
+
 ## 12. The third-system trap: find the residual job first
 
 A buyer already uses a ledger or CRM, professional workpaper software, and a specialist execution or filing tool. Ask what each **actually automates** and what still needs human investigation. An AI product requiring the user to export, re-code, and re-enter facts may increase work even when it computes the right result. Prefer replacing a truly manual artifact or a measurable exception job; otherwise integrate narrowly with the incumbent or do not build.
