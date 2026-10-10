@@ -5,7 +5,7 @@ Use to help design a new feature, a reliable AI/agent workflow, a review UX, or 
 ## Design procedure
 
 1. **Define the deliverable job.** Name one primary persona, trigger, observable outcome, critical data inputs, and explicit non-goals. Confirm the inputs can support the promise before designing the answer.
-2. **Map the end-to-end path.** Start with `Trigger -> Source data -> Interpret/plan -> Validate -> Review if needed -> Authorized action -> Verify result/recover`. Merge steps for simple flows. Distinguish task-level AI assistance from full workflow orchestration.
+2. **Map the end-to-end path.** Start with `Trigger -> Authoritative source + optional evidence -> Interpret/plan -> Validate -> Review if needed -> Handoff/authorized action -> Verify the receiving state or recover`. Merge steps for simple flows; show any incumbent step that must remain untouched. Distinguish task-level assistance from full workflow orchestration.
 3. **Choose the simplest mechanism.** Default to deterministic code and conventional UI for fixed, structured work. Use AI for ambiguity and agents only when dynamic multi-step context justifies them. Use skills/scripts for repeatable instructions or checks, not as replacements for authoritative state.
 4. **Assign authority and design states.** Identify draft, provisional, confirmed, and final *only if needed*. Decide what can auto-complete, what deserves a prepared recommendation, what requires a person's choice, and which missing fact actually blocks progress.
 5. **Design the user's decision surface.** Show source evidence, impact, and `Accept / Adjust / Undo` near the decision. Group repetitive items, keep progress visible in the same workflow, and preserve decisions across retries or regeneration.
@@ -22,6 +22,20 @@ Use to help design a new feature, a reliable AI/agent workflow, a review UX, or 
 
 **Do not equate high model confidence with authority.** A source-backed, low-risk mechanical action may be automatic; a material business choice can still require a person despite high confidence.
 
+## Preserve ownership when adding AI to an existing workflow
+
+Define a compact **input and output authority contract** before designing the agent's interface:
+
+- **Finalized upstream result:** Who finalized the value or state used by this workflow? Successful file import proves formatting, not accounting or professional correctness. Finalized balances and raw transactions have different purposes; optional transaction details must not override finalized figures.
+- **Reporting classification:** Mapping a record into a reporting taxonomy is not evidence that the upstream accounting or the downstream legal treatment is correct. Record its version, source, reviewer, and unresolved differences.
+- **Domain-specific treatment:** Keep sourced facts, AI proposals, explicit business choices, professional approval, and deterministic calculation distinct. A citation points to evidence; it does not independently prove that the cited passage supports the conclusion. If documents are missing, ask for the smallest needed evidence instead of assuming the agent examined it.
+- **Correction loop:** If an authoritative source appears incorrect, return a correction request to its owner and use a newly finalized version. Do not hide a book/master-data error inside a downstream domain adjustment.
+- **Receiving-system contract:** Define the *smallest useful delta*. For each field: tested destination/version, original value and source, known existing value or explicit UNKNOWN, action NEW / REPLACE / VERIFY_ONLY / NO_WRITE, approval and retry/reversal behavior.
+
+Keep the relevant readiness states separate: **imported -> source-finalized -> mapping-reconciled -> treatment-reviewed -> downstream-verified**. An export should not be called posted, filed, or complete until the receiving tool's state confirms it. Test the actual import template, field IDs, existing-field protection, re-import, and recalculation—not just file generation.
+
+The user interface should surface **exceptions and decisions**, not ask the professional to maintain the entire record in two places. When existing software already owns a number, link to it, validate it, or propose a targeted correction.
+
 ## Three practical design details
 
 **1. Capture human context as product data, not only chat.** When a judgment or assumption changes future results, record its meaning, subject/scope, author, date, source, validity period, approval status, and history. Distinguish `observed fact`, `assumption`, `AI recommendation`, and `human choice`. Never silently turn a conjecture into a fact or reuse an expired assumption.
@@ -34,7 +48,7 @@ Use to help design a new feature, a reliable AI/agent workflow, a review UX, or 
 
 - **First, reliable steps:** make local AI capabilities testable, bounded, and individually recoverable. Encode stable procedures as shared scripts, workflows, or skills where that reduces repeated prompting and handoffs.
 - **Then, one complete workflow:** connect those steps through agent orchestration only when the data handoffs, failure handling, and decision gates are workable.
-- **Prove the closed loop:** `Evidence -> Issue -> Recommendation -> Review when needed -> Action -> Observed outcome`. A dashboard insight or chatbot answer is not a completed business outcome.
+- **Prove the closed loop:** `Accepted source -> Evidence -> Issue -> Recommendation -> Review when needed -> Handoff/action -> Observed downstream outcome`. A dashboard insight, plausible workpaper, or generated import template is not a completed business outcome.
 - **Measure net improvement:** baseline manual time minus machine-assisted preparation, new verification, exception resolution, and rework. If total checking dominates, narrow automation or keep the human-first flow.
 
 ## Review choices by consequence

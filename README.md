@@ -29,6 +29,10 @@ Use it with an AI assistant to **review existing features, design AI-native work
 
 The Skill is deliberately opinionated about **scope and evidence**, not about always adding more AI. A model's plausible answer is not a verified business result.
 
+**A recurring product test:** Before building an agent alongside established software, map the incumbent workflow and who owns authoritative data at each step. Ask what human work remains, whether the new product replaces a spreadsheet or duplicates a professional tool, and whether its output can reach the existing downstream system **without being re-entered**. A working demo or correct calculation alone does not justify a third application.
+
+For that analysis, use [incumbent workflow and handoff boundaries](tingyu-ai-product-decision-framework/references/incumbent-workflow-boundaries.md).
+
 ## Try a concrete product review
 
 Use this **illustrative** scenario with the Feature Review mode:
@@ -50,6 +54,8 @@ Try:
 > Help me design this agent workflow. Show what code, AI, the agent, and the human should each own.
 
 > Challenge our product direction. Choose a narrow ICP, a paid outcome, what not to build, and the fastest test.
+
+> Our customers already use a bookkeeping system and specialist filing software. We want to add an AI preparation workspace. Map what each existing tool already handles, locate the meaningful manual work that remains, define input/output authority and handoffs, and tell us whether adding a third app saves net time or creates duplicate entry.
 
 This Skill does not access private projects or employer systems. [MIT License](LICENSE).
 

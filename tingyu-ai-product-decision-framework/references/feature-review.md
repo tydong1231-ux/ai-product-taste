@@ -22,6 +22,14 @@ Use for a requirement, PRD, workflow, prototype, shipped feature, UI, system des
 | Risk and recovery | What happens on wrong match, duplicate, stale source, permission denial, timeout, retry, partial success, or reversal? |
 | Economics | Does total work avoided exceed new checking and support? Is the denominator for success clear? |
 
+## Check for duplicated professional work
+
+If a feature adds another workspace beside mature software, consider the **adoption and duplication cost** a material P1 or strategic blocker. Trace where the operator already enters each fact, which incumbent already calculates or reviews it, and whether the proposed output has a tested destination.
+
+For consequential data, separate (a) authoritative finalized input, (b) optional transaction/document evidence, (c) reporting classification, (d) domain-specific adjustments/judgments, and (e) specialist downstream computation or execution. Passing a numerical reconciliation or showing high model confidence does not prove that all these stages are correct.
+
+For "ready" or "complete" claims, inspect the **receiving** product's observed state, not only the source application's successful export. If an automated interface does not exist, describe a manual handoff candidly and count its cost in net user value.
+
 ## Evidence and severity
 
 - **P0:** A concrete path to unauthorized or irreversible action, false authoritative data, material harm, or a broken core outcome. Describe the mechanism; do not call a hypothetical risk a proven bug.

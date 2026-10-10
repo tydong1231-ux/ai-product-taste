@@ -12,6 +12,26 @@ Use to assess an opportunity, startup, ICP, business model, AI positioning, GTM,
 6. **Make one call and say no.** Recommend **Build / Narrow / Pivot / Defer / Stop**, explain the binding tradeoff, name the next segment/features not to pursue, and state what contrary evidence would change the decision.
 7. **Validate before scaling.** Specify one owner, narrow buyer, measurable offer, channel, timebox, success/stop threshold, and repeatability check. Adjust the test's scope to the actual runway and team capacity.
 
+## Incumbent overlap and the third-tool test
+
+Before proposing an AI platform alongside mature software, map the **real workflow**, not competitors' marketing categories:
+
+| Boundary | Who owns it now? | What still takes a person time? |
+| --- | --- | --- |
+| Upstream record | Accounting, CRM, ERP, or other system of record | Finalizing trusted input rather than supplying raw, unreviewed data |
+| Working layer | Spreadsheets, professional workpapers, or engagement software | Interpreting, classifying, investigating exceptions, and reviewing |
+| Downstream execution | Filing, payment, publishing, or specialist software | Mapping, re-entry, validation, sign-off, reconciliation |
+
+Distinguish **feature exists**, **feature still involves human work**, **partially automated**, and **verified outcome is automatic**. Do not assume a gap because a competitor does not market agents; do not assume all work is done because a tool can generate a schedule.
+
+Compare four positions: **replace the manual spreadsheet**, **augment an incumbent on a specific task**, **replace the full incumbent**, or **do not add a tool**. Whole-system replacement must account for less visible value: collaboration, professional reporting, review procedures, evidence, permissions, annual continuity, and training—not just the overlapping feature. An AI companion must prove that the residual task outweighs third-app setup, verification, and handoff costs.
+
+Segment by **buyer + job frequency and complexity + installed software + residual manual labor + switching behavior**. Small-business counts, exemption from a formal professional report, and firm headcount are not valid denominators for a paying software market. A small firm may still need a full engagement platform; a larger tax-only team may not.
+
+**Adoption test:** What trusted input exists, who finalizes it, what evidence can AI actually access, what exact deliverable enters the existing downstream tool, and who must re-enter or recheck it? If the proposal duplicates facts and decisions already maintained elsewhere, narrow or defer.
+
+Read [incumbent-workflow-boundaries.md](incumbent-workflow-boundaries.md) for detailed authority and handoff contracts.
+
 ## Important distinctions
 
 - **Buyer value vs AI novelty:** Business buyers often need predictable outcomes, bounded risk, and understandable total cost; an open-ended agent demo is not a business case.
@@ -26,6 +46,8 @@ Use to assess an opportunity, startup, ICP, business model, AI positioning, GTM,
 ## Useful comparison questions
 
 - What exactly would the customer pay for: a report, an answer, a confirmed decision, or a reliably completed workflow?
+- Is there meaningful work left after existing software's current features and exports, or would this add a third workspace?
+- Can the downstream product consume the result without duplicate entry, untested mappings, or conflicting state?
 - What data and context must exist before the promise is defensible, and who pays the cost of providing them?
 - Does the offer make the user repeat the original work to verify the AI?
 - Is the real bottleneck understanding data, coordinating systems, human approvals, or acquiring customers?
@@ -44,7 +66,7 @@ Connect price to a value unit buyers recognize (completed jobs, verified outputs
 
 **Top 2-3 risks:** Data/context, distribution, switching friction, reliability, or unit economics with test ideas.
 
-**Smallest bet:** One timeboxed trial or paid pilot with measurable success and stop conditions, plus a reusability test if enterprise.
+**Smallest bet:** First observe the real current workflow using permissioned, appropriately anonymized cases; then run a timeboxed trial or paid pilot against that baseline. Count re-entry, review, correction, and actual downstream handoff. State measurable success and stop conditions plus a reusability test if enterprise.
 
 **Not now:** The tempting markets, features, or platform work to defer explicitly.
 

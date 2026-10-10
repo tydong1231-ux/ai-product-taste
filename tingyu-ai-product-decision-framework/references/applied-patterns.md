@@ -45,3 +45,20 @@ A business owner may want `What changed / Why / What now?`; an expert operator m
 ## 11. Enterprise integration and reuse
 
 Before promising to replace a mature system, pilot one measurable cross-system workflow. Document handoffs, required mappings, review labor, and implementation cost. The second customer's reuse is the test for scalable software, not the first customer's successful custom deployment.
+
+
+## 12. The third-system trap: find the residual job first
+
+A buyer already uses a ledger or CRM, professional workpaper software, and a specialist execution or filing tool. Ask what each **actually automates** and what still needs human investigation. An AI product requiring the user to export, re-code, and re-enter facts may increase work even when it computes the right result. Prefer replacing a truly manual artifact or a measurable exception job; otherwise integrate narrowly with the incumbent or do not build.
+
+## 13. Final record for amounts, raw detail for investigation
+
+A professionally finalized balance or state is the selected source of record; raw transactions may omit later adjustments. Use transaction-level data to understand how to treat a finalized amount, not to silently override it. If sources disagree, flag the discrepancy or ask the upstream owner for a corrected version. Keep reporting classification, domain-specific treatment, deterministic arithmetic, and professional approval as separate gates.
+
+## 14. Review-ready delta, not a second full system
+
+Produce the specific decision or adjustment needed downstream: amount, direction, explanation, grounded source, review state, tested target, and NEW / REPLACE / VERIFY_ONLY / NO_WRITE action. Existing target values must be inspected or explicitly marked unknown. Reuse already-owned mappings, opening balances, and choices rather than asking the user to maintain them in two products. An untested export is not an integration.
+
+## 15. Expert objections: isolate warning from overclaim
+
+An experienced practitioner says a prototype skipped basic input normalization. Treat that as a potential serious correctness gap and test it. Do not automatically accept an additional sweeping claim that every customer must use one named vendor or accounting basis. Find a concrete failing case, clarify who owns the underlying record, and test with qualified users. Avoid treating either a plausible demo or expert approval as market validation.
