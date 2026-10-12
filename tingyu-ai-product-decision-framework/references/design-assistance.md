@@ -44,10 +44,12 @@ The user interface should surface **exceptions and decisions**, not ask the prof
 
 **3. Optimize for the user's role, not a universal chat screen.** A manager may need `What changed? Why does it matter? What now?`; an operator may need `What is blocked? What needs review? What can I fix?`. Same underlying records, different information priority. Use conventional UI when direct editing is faster than chatting.
 
+**4. Make lineage actionable, not decorative.** For a consequential result, aim for `Result -> contributing sources/assumptions -> proposed treatment -> correction at its owner -> deterministic before/after impact -> necessary review -> downstream tie-out`. Keep the user in the original context instead of forcing them to hunt through records. Do not imply every result traces to raw transactions: show the actual authoritative boundary and say `not traced` when evidence or integration is missing. A source citation without correction and verification may still leave the user doing the whole job.
+
 ## Progressive AI automation
 
 - **First, reliable steps:** make local AI capabilities testable, bounded, and individually recoverable. Encode stable procedures as shared scripts, workflows, or skills where that reduces repeated prompting and handoffs.
-- **Then, one complete workflow:** connect those steps through agent orchestration only when the data handoffs, failure handling, and decision gates are workable.
+- **Then, one complete workflow:** connect those steps through agent orchestration only when the data handoffs, failure handling, and decision gates are workable. Before claiming it is product-ready, test it with a second operator who does not know the successful prompt path or how to repair the model.
 - **Prove the closed loop:** `Accepted source -> Evidence -> Issue -> Recommendation -> Review when needed -> Handoff/action -> Observed downstream outcome`. A dashboard insight, plausible workpaper, or generated import template is not a completed business outcome.
 - **Measure net improvement:** baseline manual time minus machine-assisted preparation, new verification, exception resolution, and rework. If total checking dominates, narrow automation or keep the human-first flow.
 
