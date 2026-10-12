@@ -33,6 +33,12 @@ The Skill is deliberately opinionated about **scope and evidence**, not about al
 
 For that analysis, use [incumbent workflow and handoff boundaries](tingyu-ai-product-decision-framework/references/incumbent-workflow-boundaries.md).
 
+**The expert-demo test:** A skilled operator can make a long prompt, skill, and general AI agent work because they supply the missing context, steer the tool, spot bad answers, and recover failures. That can be enough for a personal workflow. Before selling it as software, ask whether a *different user* can repeatedly get a trustworthy result without being the invisible debugger and reviewer.
+
+**Agent and software are different responsibilities, not mutually exclusive products.** An agent can interpret and perform work; durable records, business rules, permissions, traceable changes, error recovery, and handoffs still need an accountable implementation. That may be the customer's existing software, a small governed runtime, or a broader platform—not necessarily another SaaS.
+
+For the decision test, see [agent vs. business software and the production gap](tingyu-ai-product-decision-framework/references/agent-vs-business-software.md).
+
 ## Try a concrete product review
 
 Use this **illustrative** scenario with the Feature Review mode:

@@ -62,3 +62,23 @@ Produce the specific decision or adjustment needed downstream: amount, direction
 ## 15. Expert objections: isolate warning from overclaim
 
 An experienced practitioner says a prototype skipped basic input normalization. Treat that as a potential serious correctness gap and test it. Do not automatically accept an additional sweeping claim that every customer must use one named vendor or accounting basis. Find a concrete failing case, clarify who owns the underlying record, and test with qualified users. Avoid treating either a plausible demo or expert approval as market validation.
+
+## 16. The invisible expert behind a successful skill
+
+A power user with a long prompt and a general agent may reliably finish their own workflow because they also supply domain context, steer tools, catch mistakes, and fix failures. Do not disparage this as a toy; it may be the right solution for that user. Before calling it a product, remove the creator from the loop: can an ordinary second user achieve the same correct outcome without prompt surgery, undocumented knowledge, or rescue? Count the invisible labor.
+
+## 17. Agent intelligence plus a thin governed runtime
+
+An agent can interpret messy inputs and propose treatments, but it should not become the sole keeper of business state, rules, permissions, audit history, or consequential calculations. Prefer the **smallest** durable control layer that makes the job safe. If existing business software already supplies those responsibilities, integrate with it; do not recreate a platform just because the agent can automate one screen.
+
+## 18. Source-to-correction is better than static explainability
+
+For consequential numbers, design `Result -> Source -> Treatment -> Correct -> Recompute -> Verify downstream`. Present the actual source and decision boundary; never invent a raw-data lineage when the result depends on a professionally finalized figure, prior-period attribute, or external specialist calculation. A successful trace that cannot help the user correct the mistake may still be poor UX.
+
+## 19. Distill practitioner judgment into testable domain knowledge
+
+Public guidance is necessary but may omit assumptions, exceptions, and the real choices professionals make. Work with qualified practitioners to separate sourced rules from context-specific practice, extract required facts and counterexamples, and turn them into evidence expectations, review gates, and regression cases. A practitioner's preferred treatment is not automatically universal law. Preserve scope, jurisdiction, effective date, provenance, and unresolved disagreement.
+
+## 20. Independent review catches different failures
+
+For high-consequence agent work, a separate read-only checker can re-examine original sources, missing facts, duplicates, contradictions, and the actual downstream artifact. Do not let it merely endorse the preparer's reasoning or sign off on the same model's invented evidence. Report grounded exceptions to a human; measure false alarms and extra review time. Skip redundant checking when deterministic validation is sufficient.

@@ -47,6 +47,14 @@ Do not collapse these into one model "accuracy" score. A useful partial draft ca
 
 Test normal, incomplete, ambiguous, stale, conflicting, duplicate, unsupported, and high-consequence cases. Use deterministic invariant checks and source-based verification whenever possible; reserve human review for unresolved decisions. Do not assume one high-level model evaluator guarantees the correctness of every downstream action. Negative answers such as `unknown`, `no match`, or `needs review` can be correct outcomes.
 
+## The expert-operator and commercial reliability tests
+
+A private skill or agent may appear autonomous because its creator silently supplies context, prompts around failures, identifies wrong answers, repairs tool calls, and acts as the reviewer. Record those interventions as part of the workflow cost. To test transferability, give an unfamiliar operator a fresh case, realistic missing/conflicting inputs, and the same documented product interface. Observe whether they can finish without privileged domain knowledge or developer rescue.
+
+For a consequential workflow, also cover at least the relevant production risks: unusual but valid cases, absent/contradictory evidence, source/version drift, unauthorized action, duplicate/retried writes, partial failure, human correction, changed models/rules, and handoff mismatch. Preserve versioned expert-accepted reference cases and failure cases; re-run regressions when the model, prompt, rule, source parser, or integration changes. Monitor intervention minutes and critical errors after release, not just test-set pass rate.
+
+An independent reviewer agent can be useful when it has separate task context, read-only authority, and access to original trusted evidence and deterministic checks. It must not treat the preparer's explanation, self-assigned confidence, or self-uploaded source label as independent proof. Its findings are questions or exceptions for accountable review, not autonomous professional sign-off; a second model's agreement is not an audit.
+
 ## Call experiments by their real names
 
 - **Offline regression:** Compare versions on the same saved cases.
