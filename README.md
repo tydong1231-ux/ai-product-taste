@@ -1,68 +1,47 @@
 # AI Product Taste
 
-A reusable AI Skill for reviewing product features, designing AI-native workflows, and evaluating product direction.
+A reusable AI Skill for **reviewing product features, designing AI-native workflows, and challenging product strategy**. It favors sound judgment over AI feature checklists.
 
-The framework weighs user value, technical feasibility, agent autonomy, trust, and business economics, rather than treating AI as a feature checklist.
+**Core philosophy:** Start with the customer's job, respect the evidence, assign work to the right mechanism, and measure a verified outcome rather than a compelling demo.
 
-Use it with an AI assistant to **review existing features, design AI-native workflows, or challenge product strategy**. It prioritizes clear reasoning, real user value, trustworthy AI/agent boundaries, and concise, actionable recommendations.
+> **Authority before autonomy.** An agent's ability to perform an action does not grant it authority to make the business decision or commit the result. Delegate autonomy by action, evidence, permissions, risk, independent verification, and recoverability—not model confidence alone.
 
 ## Three modes
 
 | Mode | Use it for | Output |
 | --- | --- | --- |
-| **Feature Review** | PRDs, prototypes, workflows, shipped features, code | Verdict, key issues, fixes, acceptance checks |
-| **Design Assistance** | Product flows, AI/agent actions, human-in-the-loop UX | Practical design, role boundaries, edge cases, MVP |
-| **Product Direction Review** | ICP, business ideas, positioning, GTM, pricing, roadmaps | Build / Narrow / Pivot / Defer / Stop, with a validation plan |
+| **Feature Review** | PRDs, prototypes, code, workflows, shipped features | Verdict, material issues, fixes, acceptance tests |
+| **Design Assistance** | AI-native products, agent workflows, human review UX | Main flow, authority boundaries, failure handling, MVP |
+| **Product Direction Review** | ICP, positioning, pricing, GTM, roadmap, build-vs-buy | Build / Narrow / Pivot / Defer / Stop and validation plan |
 
-**Core ideas:** Start with the customer and the job. Promise only what the data supports. Use code for deterministic truth, AI for ambiguity, agents for bounded execution, and people for consequential judgment. Measure the complete outcome **minus the cost of verification**. Explicitly decide what *not* to build.
+## Seven decision lenses
 
-## Decision framework
-
-| Lens | Question to answer |
+| Lens | Ask |
 | --- | --- |
-| Customer and job | Who is the buyer, and which recurring task is painful enough to solve? |
-| Data readiness | What evidence is available, what is missing, and what cannot be inferred? |
-| Right mechanism | Should this be code, UI, a model, a bounded agent, or a human decision? |
-| Consequential actions | What needs validation, explicit permission, review, and recovery? |
-| Business outcome | Does the complete workflow save time **after** verification and exceptions? |
-| Strategic choice | What should we build, narrow, defer, pivot, or stop—and why? |
+| **Customer and job** | Who needs which completed outcome, and what do they do today? |
+| **Evidence and authority** | What is known, assumed, missing, or proposed? Who owns the source, rule, decision, and final record? |
+| **Right mechanism** | Is the smallest sufficient solution code, conventional UI, a skill, an agent, an integration, or a governed platform? |
+| **Delegated autonomy** | What may the agent observe, propose, prepare, or commit? Are permission, evidence, checks, consequences, and recovery adequate for *this action*? |
+| **Human attention** | Does the person decide consequential exceptions—or redundantly repeat machine-verifiable work? |
+| **Verified completion** | Did the receiving system actually accept the intended result? What happens on partial failure or correction? |
+| **Net value and focus** | After review, rework, integration, risk, and operating cost, is this still worth building? What should not be built? |
 
-The Skill is deliberately opinionated about **scope and evidence**, not about always adding more AI. A model's plausible answer is not a verified business result.
+**Design implications:** Build around work, authoritative state, and the user's next decision—not necessarily a chat window. Keep `observed`, `proposed`, `approved`, `committed`, and `verified` distinct. Make missing information visible, preserve corrections, and let users trace and repair consequential results. Use the smallest trustworthy control layer; mature systems of record should not be duplicated without a real reason.
 
-**A recurring product test:** Before building an agent alongside established software, map the incumbent workflow and who owns authoritative data at each step. Ask what human work remains, whether the new product replaces a spreadsheet or duplicates a professional tool, and whether its output can reach the existing downstream system **without being re-entered**. A working demo or correct calculation alone does not justify a third application.
+**Two reality checks:** A successful expert-driven agent demo does not establish that a new operator can repeat the outcome without hidden debugging. And an AI workspace that creates duplicate entry beside existing software may *increase* work despite accurate outputs.
 
-For that analysis, use [incumbent workflow and handoff boundaries](tingyu-ai-product-decision-framework/references/incumbent-workflow-boundaries.md).
+See [Design Assistance](tingyu-ai-product-decision-framework/references/design-assistance.md) for actionable autonomy and UX decisions, [agent vs. business software](tingyu-ai-product-decision-framework/references/agent-vs-business-software.md) for productization, and [incumbent workflow boundaries](tingyu-ai-product-decision-framework/references/incumbent-workflow-boundaries.md) for system-of-record handoffs.
 
-**The expert-demo test:** A skilled operator can make a long prompt, skill, and general AI agent work because they supply the missing context, steer the tool, spot bad answers, and recover failures. That can be enough for a personal workflow. Before selling it as software, ask whether a *different user* can repeatedly get a trustworthy result without being the invisible debugger and reviewer.
+## Try it
 
-**Agent and software are different responsibilities, not mutually exclusive products.** An agent can interpret and perform work; durable records, business rules, permissions, traceable changes, error recovery, and handoffs still need an accountable implementation. That may be the customer's existing software, a small governed runtime, or a broader platform—not necessarily another SaaS.
+> Review this proposed auto-approval flow. Identify who owns the decision, which actions could be safely delegated, failure paths, and how to prove net work saved.
 
-For the decision test, see [agent vs. business software and the production gap](tingyu-ai-product-decision-framework/references/agent-vs-business-software.md).
+> Design a workflow that uses AI to interpret messy inputs but keeps final state, corrections, and consequential decisions trustworthy. Use ordinary UI where it beats chat.
 
-## Try a concrete product review
+> Challenge this agent product strategy. Does it remove a meaningful step from the current workflow, or merely add another application? What is the smallest viable wedge?
 
-Use this **illustrative** scenario with the Feature Review mode:
+Install the [`tingyu-ai-product-decision-framework/`](tingyu-ai-product-decision-framework/) folder in an AI assistant that supports Skills, or package the folder as a Skill ZIP. No MCP server, API key, or private project access is required.
 
-> We want an AI agent to automatically approve bank-transaction matches whenever model confidence is high. Review the product decision, identify the most important failure modes, propose a safer first version, and tell us how to measure real time saved after accounting for review and corrections.
+**Operating principle:** Respect complexity. Automate routine work. Maximize trustworthy delegation, not autonomous activity.
 
-A useful review should address false accepted matches, required supporting evidence, authoritative accounting APIs, exception handling, and a measurable release criterion. It should not merely suggest a higher confidence threshold or say to keep a human in every loop.
-
-You can also try Design Assistance for the end-to-end review UX, or Product Direction Review to decide whether the feature is the best next investment.
-
-## Use
-
-Install the [`tingyu-ai-product-decision-framework/`](tingyu-ai-product-decision-framework/) folder in an AI assistant that supports custom Skills, or zip that folder for clients that accept Skill ZIP uploads. Installation options vary by client. **No MCP server, API key, or private project access is required.**
-
-Try:
-
-> Review this PRD with AI Product Taste. Identify the three most important risks, recommend the smallest useful changes, and tell me how to verify them.
-
-> Help me design this agent workflow. Show what code, AI, the agent, and the human should each own.
-
-> Challenge our product direction. Choose a narrow ICP, a paid outcome, what not to build, and the fastest test.
-
-> Our customers already use a bookkeeping system and specialist filing software. We want to add an AI preparation workspace. Map what each existing tool already handles, locate the meaningful manual work that remains, define input/output authority and handoffs, and tell us whether adding a third app saves net time or creates duplicate entry.
-
-This Skill does not access private projects or employer systems. [MIT License](LICENSE).
-
-Maintained by [Tingyu Dong](https://github.com/tydong1231-ux).
+[MIT License](LICENSE) · Maintained by [Tingyu Dong](https://github.com/tydong1231-ux).

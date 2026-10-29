@@ -1,75 +1,64 @@
 # Mode 2: Design Assistance
 
-Use to help design a new feature, a reliable AI/agent workflow, a review UX, or a business system. Give concrete choices that the team can implement without unnecessary ceremony.
+Use to design AI-native features, non-chat products, agent workflows, review UX, and reliable execution. Give the smallest implementable design that completes a user job.
 
-## Design procedure
+## Design in six steps
 
-1. **Define the deliverable job.** Name one primary persona, trigger, observable outcome, critical data inputs, and explicit non-goals. Confirm the inputs can support the promise before designing the answer.
-2. **Map the end-to-end path.** Start with `Trigger -> Authoritative source + optional evidence -> Interpret/plan -> Validate -> Review if needed -> Handoff/authorized action -> Verify the receiving state or recover`. Merge steps for simple flows; show any incumbent step that must remain untouched. Distinguish task-level assistance from full workflow orchestration.
-3. **Choose the simplest mechanism.** Default to deterministic code and conventional UI for fixed, structured work. Use AI for ambiguity and agents only when dynamic multi-step context justifies them. Use skills/scripts for repeatable instructions or checks, not as replacements for authoritative state.
-4. **Assign authority and design states.** Identify draft, provisional, confirmed, and final *only if needed*. Decide what can auto-complete, what deserves a prepared recommendation, what requires a person's choice, and which missing fact actually blocks progress.
-5. **Design the user's decision surface.** Show source evidence, impact, and `Accept / Adjust / Undo` near the decision. Group repetitive items, keep progress visible in the same workflow, and preserve decisions across retries or regeneration.
-6. **Test two critical failure paths.** Specify acceptance checks and the smallest coherent MVP. Include the full outcome and verification burden, not only successful model output.
+1. **Define the outcome.** Identify the user, trigger, existing workflow, trustworthy input, intended receiving state, and non-goals. Check that the evidence can support the promise.
+2. **Map authority, then capabilities.** Identify who owns each source fact, rule, business decision, persisted record, and downstream action. Do not turn a proposed interpretation into an authoritative fact.
+3. **Choose the least complex mechanism.** Prefer code and conventional UI for fixed work, AI for ambiguous interpretation, agents for justified multi-step execution, and the incumbent system for records it already owns. Use a new governed runtime only for responsibilities that actually need one.
+4. **Set action-specific autonomy.** Distinguish observe, propose, stage, and commit. Define the evidence, authorization, verification, consequences, and recovery required for each meaningful state change.
+5. **Design the decision surface.** Show progress and exceptions in the user's business workflow. Put source, rationale, effect, and `Accept / Correct / Undo` by consequential decisions; do not make the user redo machine-verifiable work.
+6. **Prove the closed loop.** Test the normal case, one missing/conflicting-evidence case, and one failed/retried action. Measure the real downstream result and the remaining human effort.
 
-## Allocate work and authority
+## Who owns what?
 
-| Owner | Delegate | Require |
+| Role | Primary responsibility | Boundary |
 | --- | --- | --- |
-| Code / rules | Calculations, invariants, permissions, validation, state transitions, official writes | Reproducible inputs, version/state checks, traceability |
-| AI model | Extraction, messy interpretation, classification, explanation, drafting | Grounded sources, structured result, uncertainty and abstention |
-| Agent | Bounded investigation and action orchestration across tools | Declared capabilities, budgets, milestones, checkpoints, recoverable failures |
-| Person | Missing business context, goals, consequential tradeoffs, approvals, accountability | Clear alternatives, evidence and impact, low-friction correction |
+| **Source / external authority** | Original evidence, governing rules, upstream records, downstream calculations or commitments | Do not overwrite, infer, or duplicate its authority without an explicit contract |
+| **Platform + deterministic code** | Typed state, validations, permissions, versioning, audit, authorized writes, downstream verification, recovery | Verifies what can be checked; does not transform unsupported assumptions into facts |
+| **AI model** | Extract, interpret, classify, explain, draft | Ground uncertain outputs; preserve unknowns and abstain when evidence is insufficient |
+| **Agent** | Plan and execute bounded multi-step work through semantic tools | May only exercise explicitly delegated capabilities; must not self-grant approval |
+| **Person** | Set goals and delegation policy, provide missing context, resolve material choices, own required sign-off | Intervene where judgment or accountability matters, not at every mechanical step |
 
-**Do not equate high model confidence with authority.** A source-backed, low-risk mechanical action may be automatic; a material business choice can still require a person despite high confidence.
+These are **responsibilities, not mandatory product components**. One system may serve multiple roles. A low-stakes one-off task may need only a script or a general agent; a consequential recurring workflow may need durable governance.
 
-## Preserve ownership when adding AI to an existing workflow
+## Authority before autonomy: the action test
 
-Define a compact **input and output authority contract** before designing the agent's interface:
+For every action that changes state, decide:
 
-- **Finalized upstream result:** Who finalized the value or state used by this workflow? Successful file import proves formatting, not accounting or professional correctness. Finalized balances and raw transactions have different purposes; optional transaction details must not override finalized figures.
-- **Reporting classification:** Mapping a record into a reporting taxonomy is not evidence that the upstream accounting or the downstream legal treatment is correct. Record its version, source, reviewer, and unresolved differences.
-- **Domain-specific treatment:** Keep sourced facts, AI proposals, explicit business choices, professional approval, and deterministic calculation distinct. A citation points to evidence; it does not independently prove that the cited passage supports the conclusion. If documents are missing, ask for the smallest needed evidence instead of assuming the agent examined it.
-- **Correction loop:** If an authoritative source appears incorrect, return a correction request to its owner and use a newly finalized version. Do not hide a book/master-data error inside a downstream domain adjustment.
-- **Receiving-system contract:** Define the *smallest useful delta*. For each field: tested destination/version, original value and source, known existing value or explicit UNKNOWN, action NEW / REPLACE / VERIFY_ONLY / NO_WRITE, approval and retry/reversal behavior.
+1. **Permission:** Who authorized this actor, tool, object, scope, and level of effect?
+2. **Evidence:** Are the required facts established, or is an inference being mistaken for a fact?
+3. **Verification:** Can the result be checked against independent evidence, deterministic rules, or the receiving system? A second model's agreement alone is not proof.
+4. **Consequence:** What happens if this action is wrong? Does law, policy, or material judgment require approval?
+5. **Recovery:** Can it be undone or compensated? Are retries idempotent, versions checked, and partial success detectable?
 
-Keep the relevant readiness states separate: **imported -> source-finalized -> mapping-reconciled -> treatment-reviewed -> downstream-verified**. An export should not be called posted, filed, or complete until the receiving tool's state confirms it. Test the actual import template, field IDs, existing-field protection, re-import, and recalculation—not just file generation.
+| Appropriate delegation | Product behavior |
+| --- | --- |
+| **Observe / propose** | Read allowed data; present grounded drafts without changing authoritative state |
+| **Prepare / stage** | Validate and save reviewable, reversible work; route unresolved judgments to people |
+| **Policy-bounded commit** | Automatically execute only with explicit permission, adequate evidence/checks, acceptable risk, and verifiable recovery |
+| **Consequential commit** | Require the necessary human decision or formal authorization before external effects; verify the outcome afterward |
 
-The user interface should surface **exceptions and decisions**, not ask the professional to maintain the entire record in two places. When existing software already owns a number, link to it, validate it, or propose a targeted correction.
+A model's confidence score does not increase its permission. Nor does safety require blanket approval for each low-risk, objectively verifiable action. Delegation can expand with evidence and evaluation, or contract when the context becomes riskier.
 
-## Three practical design details
+## Design state and UX around the job
 
-**1. Capture human context as product data, not only chat.** When a judgment or assumption changes future results, record its meaning, subject/scope, author, date, source, validity period, approval status, and history. Distinguish `observed fact`, `assumption`, `AI recommendation`, and `human choice`. Never silently turn a conjecture into a fact or reuse an expired assumption.
+- Keep `observed / assumed / proposed / reviewed / committed / verified` distinct **where material**. A partial output is not a completed outcome; missing is `UNKNOWN`, not consent or zero.
+- Preserve human choices, provenance, version, and scope across reruns. Invalidate only affected approvals when inputs change.
+- Center the UI on business objects, status, exceptions, and next decisions. Use chat for exploration, not as a compulsory interface to structured records or simple edits.
+- Make correction contextual: `Result -> evidence / assumption -> affected action -> fix at owner -> recompute -> appropriate approval -> verify downstream`. If lineage is unavailable, say so; do not invent it.
+- For side effects use authenticated semantic tools, narrow allowlists, preconditions, idempotency, audit, and read-back. On failure, expose the partial state and a safe next step; never show success merely because a tool call returned.
+- Avoid duplicate entry beside mature software. When the source or target is wrong, send a correction to its owner rather than concealing the problem in a parallel workspace. See [incumbent workflow boundaries](incumbent-workflow-boundaries.md) for detailed integration contracts.
 
-**2. Design checkpoints at action boundaries.** For each meaningful side effect define the authenticated actor, semantic tool, valid input, source evidence, state precondition, idempotency, audit record, result verification, and cancel/reversal or compensation. Prefer existing domain APIs plus narrower agent allowlists. Avoid stacking opaque AI self-checkers as a substitute for explicit validation and evidence.
+## Illustrative pattern
 
-**3. Optimize for the user's role, not a universal chat screen.** A manager may need `What changed? Why does it matter? What now?`; an operator may need `What is blocked? What needs review? What can I fix?`. Same underlying records, different information priority. Use conventional UI when direct editing is faster than chatting.
+For an ambiguous transaction match:
 
-**4. Make lineage actionable, not decorative.** For a consequential result, aim for `Result -> contributing sources/assumptions -> proposed treatment -> correction at its owner -> deterministic before/after impact -> necessary review -> downstream tie-out`. Keep the user in the original context instead of forcing them to hunt through records. Do not imply every result traces to raw transactions: show the actual authoritative boundary and say `not traced` when evidence or integration is missing. A source citation without correction and verification may still leave the user doing the whole job.
+`Evidence collected -> deterministic candidate checks -> agent proposes match or abstains -> policy permits a proven unique low-risk match OR routes an ambiguous match to review -> authorized write -> persisted result verified -> correction/retry available.`
 
-## Progressive AI automation
-
-- **First, reliable steps:** make local AI capabilities testable, bounded, and individually recoverable. Encode stable procedures as shared scripts, workflows, or skills where that reduces repeated prompting and handoffs.
-- **Then, one complete workflow:** connect those steps through agent orchestration only when the data handoffs, failure handling, and decision gates are workable. Before claiming it is product-ready, test it with a second operator who does not know the successful prompt path or how to repair the model.
-- **Prove the closed loop:** `Accepted source -> Evidence -> Issue -> Recommendation -> Review when needed -> Handoff/action -> Observed downstream outcome`. A dashboard insight, plausible workpaper, or generated import template is not a completed business outcome.
-- **Measure net improvement:** baseline manual time minus machine-assisted preparation, new verification, exception resolution, and rework. If total checking dominates, narrow automation or keep the human-first flow.
-
-## Review choices by consequence
-
-- **Auto-complete:** mechanical, sufficiently evidenced, reversible, and within explicit policy; make it visible in history.
-- **Prepared recommendation:** show the proposed result and its consequence; person accepts or adjusts a meaningful judgment.
-- **Explicit selection/approval:** goals, elections, irreversible or material external effects, or domain-mandated sign-off.
-- **Ask for context:** one decisive question when evidence cannot establish a necessary real-world fact; continue unrelated work.
-
-Do not require the same approval or evaluation level for every step. Avoid universal claims that retrofitting agents into legacy systems is impossible; assess whether a narrow API/action surface can be made safe and economical first.
-
-## Illustrative flow
-
-**Task:** Help an operator resolve an ambiguous account item.
-
-`Detect an anomaly -> Gather allowed records -> Code checks consistency -> Agent proposes one action with source references -> Uncertain item enters one review card -> Operator accepts or edits -> Authorized API applies change -> System checks persisted result and provides an undo path.`
-
-Adapt controls to the domain. Prefer a short flow, a few actionable states, and two tested failures over a comprehensive but unshippable platform diagram.
+Do not automate solely because similarity or model confidence is high. Equally, do not force an operator to inspect every unique, policy-compliant match if sound checks and authorization make automatic completion appropriate.
 
 ## Deliverable
 
-Return a main user flow, the ownership/review boundary, 1-3 concrete interaction choices, the critical edge cases, and MVP acceptance checks. Avoid huge backlogs unless asked.
+Give **one main flow**, the minimal authority/delegation map, 1-3 specific interaction choices, critical failure paths, and MVP acceptance checks. Optimize **verified outcome value minus human verification and recovery cost**, with hard safety requirements independent of that calculation.

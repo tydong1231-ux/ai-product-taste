@@ -23,7 +23,7 @@ For professional and consequential workflows, an accurate formula cannot rescue 
 5. **Deterministic outputs:** Are calculations, trace, rule versions, tie-outs and carryovers correct for the inputs that are truly established?
 6. **Downstream outcome:** Was the field imported, validated, recalculated, approved, posted or filed by the receiving system? An exported file does not establish any of those outcomes.
 
-Do not collapse these into one model "accuracy" score. A useful partial draft can be ready for review while unresolved mapping, missing fact, or untested handoff blocks completion.
+Do not collapse these into one model "accuracy" score. A useful partial draft can be ready for review while unresolved mapping, missing fact, or untested handoff blocks completion. **Capability is not authority:** evaluate permission to commit separately from model correctness, for each consequential action.
 
 **Handle expert objections as test cases.** Extract the strongest falsifiable concern, verify the applicable standard and actual workflow, and design a regression/pilot case. Experts can identify real data-quality gaps and also overstate which vendor, reporting standard, or process is universally mandatory. Address the concrete failure without becoming defensive or accepting an unsupported absolute. A demo is not professional validation; professional validation is not evidence of product-market fit.
 

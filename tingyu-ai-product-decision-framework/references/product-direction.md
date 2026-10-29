@@ -8,7 +8,7 @@ Use to assess an opportunity, startup, ICP, business model, AI positioning, GTM,
 2. **Work backward from a deliverable result.** Use `ICP -> Important job -> Required data/context -> Reliable workflow -> Product offer -> Distribution -> Economics`. The model's ability to answer a question does not prove the product has the information to answer it correctly. A long-term AI category may be a destination, not a viable first acquisition wedge.
 3. **Quantify the workflow opportunity.** For a major automation bet, sample the material steps and record: frequency/time share, data availability, what requires human judgment or physical action, AI feasibility, error consequence, review cost, and remaining work. Measure a completed business outcome, not isolated feature coverage.
 4. **Check buyer economics and access.** Look for paid tests, committed workflow ownership, present costs, repeat usage, and a plausible distribution channel. A free plan reduces trial friction but does not acquire visitors; self-service use does not eliminate onboarding and integrations.
-5. **Compare up to three real options.** For example: narrow paid workflow, integration/agent layer over systems of record, or deeper owned SaaS module. Judge time to reliable value, differentiation, security and context needs, implementation burden, repeatability, cash needs, and support costs.
+5. **Compare up to three real options.** For example: narrow paid workflow, integration/agent layer over systems of record, or deeper owned SaaS module. Ask which facts, decisions, and final records each option must govern. Build a new platform only when existing systems or a thin runtime cannot reliably supply the needed authority, recovery, and handoff. Judge time to value, differentiation, switching and implementation cost.
 6. **Make one call and say no.** Recommend **Build / Narrow / Pivot / Defer / Stop**, explain the binding tradeoff, name the next segment/features not to pursue, and state what contrary evidence would change the decision.
 7. **Validate before scaling.** Specify one owner, narrow buyer, measurable offer, channel, timebox, success/stop threshold, and repeatability check. Adjust the test's scope to the actual runway and team capacity.
 
@@ -49,7 +49,7 @@ Read [incumbent-workflow-boundaries.md](incumbent-workflow-boundaries.md) for de
 - Is there meaningful work left after existing software's current features and exports, or would this add a third workspace?
 - Can the downstream product consume the result without duplicate entry, untested mappings, or conflicting state?
 - What data and context must exist before the promise is defensible, and who pays the cost of providing them?
-- Does the offer make the user repeat the original work to verify the AI?
+- Does the offer make the user repeat the original work to verify the AI? Can verifiable, policy-bounded actions be delegated without forcing blanket manual approval?
 - Is the real bottleneck understanding data, coordinating systems, human approvals, or acquiring customers?
 - Does one pilot generalize, or is the business effectively bespoke implementation?
 - If the team could fund only one bet, which segment, channel, and outcome win? What gets rejected now?

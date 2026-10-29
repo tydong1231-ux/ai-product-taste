@@ -16,7 +16,7 @@ Use for a requirement, PRD, workflow, prototype, shipped feature, UI, system des
 | --- | --- |
 | User outcome | Does it finish the important job, or merely expose features and impressive answers? |
 | Data ceiling | Are required inputs reliable, current, correctly scoped, and complete? Are unsupported insights withheld? |
-| Authority | Which actions are deterministic, inferred, provisional, approved, or posted? Can a model silently bypass a rule? |
+| Authority / autonomy | Who owns the facts, decisions, rules, and final state? What may the agent observe, propose, stage, or commit—and is delegation justified by permission, evidence, independent checks, risk, and recovery? |
 | End-to-end workflow | Is effort saved at this step lost to downstream handoffs, reviews, or missing integrations? |
 | Human experience | Does each role see what matters, why, and the next action? Does the reviewer repeat the work? |
 | Risk and recovery | What happens on wrong match, duplicate, stale source, permission denial, timeout, retry, partial success, or reversal? |
@@ -42,7 +42,7 @@ For "ready" or "complete" claims, inspect the **receiving** product's observed s
 - Inspect the visible code path, state transition, validation, permission check, and failure path when available. A PRD is intent, not proof.
 - Walk one normal and two high-consequence edge paths; check persisted state, not only a success toast or chat response.
 - Check whether source imports, regeneration, or re-runs preserve prior human decisions and correct invalidated ones.
-- For agent changes, validate actual tool authority, bounded output, error propagation, and user-facing action evidence.
+- For agent changes, trace a proposed result through approval or policy-bounded commit to verified receiving state. Check tool scope, evidence, retries, recovery, and preserved human corrections; do not use model confidence as write permission.
 - Prefer targeted fixes and acceptance tests to a full rewrite.
 
 ## Concise example
